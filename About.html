@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香醇咖啡館 - 關於我們</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F4E4BC;
+            --dark-brown: #3E2723;
+            --light-cream: #FFF8DC;
+        }
+
+        * {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .navbar {
+            background: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .story-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: left 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .value-card:hover::before {
+            left: 0;
+        }
+
+        .value-icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            background: var(--light-cream);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--secondary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .team-photo {
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 5%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 5%;
+            margin-right: auto;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-brown));
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .awards-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .award-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: var(--light-cream);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .award-item:hover {
+            background: var(--accent-color);
+            transform: translateX(10px);
+        }
+
+        .award-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+            width: 60px;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .story-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-year {
+                left: 20px;
+                transform: none;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .award-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .award-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="home.html">
+                <i class="fas fa-coffee me-2"></i>香醇咖啡館
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">菜單</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="About.html">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="locations.html">分店資訊</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">最新消息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html#gallery">相簿</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html#contact">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <h1 class="hero-title" data-aos="fade-up">關於我們</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">用心傳承咖啡文化 · 創造美好時光</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Our Story Section -->
+        <section class="story-section" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">我們的故事</h2>
+                    <p class="lead mb-4">一切始於對咖啡的熱愛與對品質的堅持</p>
+                    <p class="mb-4">
+                        2018年，創辦人張志明在一次歐洲旅行中，被當地小鎮咖啡館的溫馨氛圍和精湛工藝深深感動。回到台灣後，他決定將這份感動分享給更多人，於是「香醇咖啡館」誕生了。
+                    </p>
+                    <p class="mb-4">
+                        我們堅信每一杯咖啡都有其獨特的故事。從咖啡豆的產地到烘焙師傅的巧手，從咖啡師的沖煮技藝到客人的品味體驗，每一個環節都承載著我們對完美的追求。
+                    </p>
+                    <p>
+                        六年來，我們不僅僅是一家咖啡館，更是社區中溫暖的聚會所，是忙碌都市人的心靈港灣，是咖啡愛好者交流的平台。
+                    </p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="咖啡館故事" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Values Section -->
+        <section class="py-5">
+            <h2 class="section-title" data-aos="fade-up">我們的理念</h2>
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4 class="mb-3">永續經營</h4>
+                    <p>我們選用公平貿易咖啡豆，支持咖啡農的生計，同時致力於環保包裝和減塑行動，為地球盡一份心力。</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4 class="mb-3">用心服務</h4>
+                    <p>每一位來到香醇的客人都是我們的朋友。我們用真誠的微笑和專業的服務，讓每個人都能感受到家的溫暖。</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4 class="mb-3">品質至上</h4>
+                    <p>從咖啡豆的挑選到最後一杯咖啡的呈現，我們對每個細節都精益求精，只為了那完美的一杯香醇。</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="mb-3">社區連結</h4>
+                    <p>我們不只是賣咖啡，更希望成為社區的一部分，舉辦各種活動和工作坊，促進人與人之間的交流。</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="mb-3">不斷創新</h4>
+                    <p>我們持續學習新的沖煮技術和創意調配，定期推出季節限定飲品，為客人帶來驚喜與新鮮感。</p>
+                </div>
+                
+                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="mb-3">熱情分享</h4>
+                    <p>我們樂於分享咖啡知識，從品種介紹到沖煮技巧，希望每位客人都能更深入地了解和愛上咖啡。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-5">
+            <h2 class="section-title" data-aos="fade-up">我們的團隊</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="張志明" class="team-photo">
+                        <h4 class="mb-2">張志明</h4>
+                        <p class="text-muted mb-3">創辦人 & 總店長</p>
+                        <p class="small">擁有15年咖啡業經驗，國際認證咖啡師，熱愛旅行和探索世界各地的咖啡文化。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-star text-warning me-1"></i>
+                            <i class="fas fa-star text-warning me-1"></i>
+                            <i class="fas fa-star text-warning me-1"></i>
+                            <i class="fas fa-star text-warning me-1"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <img src="data:image/jpeg;base64,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" 
+                             alt="李雅婷" class="team-photo">
+                        <h4 class="mb-2">李雅婷</h4>
+                        <p class="text-muted mb-3">首席咖啡師</p>
+                        <p class="small">專精於精品咖啡沖煮，多次獲得台灣咖啡沖煮大賽獎項，擅長拉花藝術創作。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-fire text-danger me-2"></i>
+                            <small class="text-muted">2023年台灣咖啡大師</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="王大偉" class="team-photo">
+                        <h4 class="mb-2">王大偉</h4>
+                        <p class="text-muted mb-3">烘豆師</p>
+                        <p class="small">擁有10年烘豆經驗，對咖啡豆的烘焙有獨特見解，能夠完美呈現每種豆子的特色。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-fire text-danger me-2"></i>
+                            <small class="text-muted">專業烘豆認證</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="陳美慧" class="team-photo">
+                        <h4 class="mb-2">陳美慧</h4>
+                        <p class="text-muted mb-3">甜點師</p>
+                        <p class="small">法式糕點專業背景，擅長製作各式手工甜點，每一個作品都是藝術品。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-cookie-bite text-primary me-2"></i>
+                            <small class="text-muted">法式糕點認證</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="林志豪" class="team-photo">
+                        <h4 class="mb-2">林志豪</h4>
+                        <p class="text-muted mb-3">營運經理</p>
+                        <p class="small">負責店面營運管理，確保每一個環節都能完美運作，讓客人享受最佳的用餐體驗。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-chart-line text-success me-2"></i>
+                            <small class="text-muted">商業管理學士</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="黃淑芬" class="team-photo">
+                        <h4 class="mb-2">黃淑芬</h4>
+                        <p class="text-muted mb-3">客服經理</p>
+                        <p class="small">專責客戶關係維護和活動企劃，致力於提升客戶滿意度和品牌體驗。</p>
+                        <div class="mt-3">
+                            <i class="fas fa-handshake text-info me-2"></i>
+                            <small class="text-muted">客戶服務專家</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="py-5">
+            <h2 class="section-title" data-aos="fade-up">發展歷程</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h4>創立初期</h4>
+                        <p>香醇咖啡館在台北信義區正式開幕，以手沖咖啡和溫馨環境吸引了第一批忠實顧客。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <h4>品質認證</h4>
+                        <p>獲得台灣精品咖啡協會認證，成為精品咖啡推廣夥伴，開始舉辦咖啡品鑑課程。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4>數位轉型</h4>
+                        <p>疫情期間推出線上訂購和外送服務，同時開發會員系統，維繫與客戶的深度連結。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h4>榮獲獎項</h4>
+                        <p>榮獲「台北最佳精品咖啡館」獎項，並開始與國際咖啡莊園建立直接貿易關係。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h4>社區深耕</h4>
+                        <p>啟動「咖啡進社區」計畫，與在地小學合作舉辦咖啡文化教育活動。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h4>永續經營</h4>
+                        <p>全面導入環保包裝，推出「杯子租借」計畫，成為台北首家零廢棄咖啡館。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>持續創新</h4>
+                        <p>開設咖啡學院，提供專業咖啡師培訓課程，並計畫在年底開設第二家分店。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section" data-aos="fade-up">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="50000">0</span>
+                            <h5>滿意客戶</h5>
+                            <p class="small">累計服務客戶數量</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="180000">0</span>
+                            <h5>杯咖啡</h5>
+                            <p class="small">六年來製作的咖啡總數</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="25">0</span>
+                            <h5>種咖啡豆</h5>
+                            <p class="small">來自世界各地的精品豆</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="4.8">0</span>
+                            <h5>星評價</h5>
+                            <p class="small">Google評論平均評分</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section class="awards-section" data-aos="fade-up">
+            <h2 class="section-title">榮譽與認證</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">2023年台北最佳精品咖啡館</h5>
+                            <p class="text-muted mb-0">台北市觀光局頒發</p>
+                        </div>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">精品咖啡協會認證</h5>
+                            <p class="text-muted mb-0">台灣精品咖啡協會</p>
+                        </div>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">綠色環保企業認證</h5>
+                            <p class="text-muted mb-0">台北市環保局</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">卓越服務品質獎</h5>
+                            <p class="text-muted mb-0">台灣服務業聯合總會</p>
+                        </div>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">公平貿易夥伴認證</h5>
+                            <p class="text-muted mb-0">國際公平貿易組織</p>
+                        </div>
+                    </div>
+                    
+                    <div class="award-item">
+                        <div class="award-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">社區貢獻企業獎</h5>
+                            <p class="text-muted mb-0">信義區公所</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="story-section" data-aos="fade-up">
+            <div class="text-center">
+                <h2 class="section-title">我們的使命</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <p class="lead mb-4" style="font-size: 1.3rem; line-height: 1.8;">
+                            "讓每一杯咖啡都成為連結人心的橋樑，在忙碌的都市生活中創造溫暖的相遇時光。"
+                        </p>
+                        <p class="mb-4">
+                            我們致力於將香醇咖啡館打造成一個充滿人情味的空間，不僅提供優質的咖啡和食物，
+                            更要成為人們心靈休憩的港灣，促進社區的凝聚力，傳承咖啡文化的美好。
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3" style="background: var(--light-cream); border-radius: 10px;">
+                                    <i class="fas fa-coffee text-primary mb-2" style="font-size: 2rem;"></i>
+                                    <h6>品質承諾</h6>
+                                    <small class="text-muted">每一杯都是精心之作</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3" style="background: var(--light-cream); border-radius: 10px;">
+                                    <i class="fas fa-users text-primary mb-2" style="font-size: 2rem;"></i>
+                                    <h6>社區連結</h6>
+                                    <small class="text-muted">凝聚社區溫暖力量</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3" style="background: var(--light-cream); border-radius: 10px;">
+                                    <i class="fas fa-globe text-primary mb-2" style="font-size: 2rem;"></i>
+                                    <h6>永續發展</h6>
+                                    <small class="text-muted">為地球環境盡心力</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="text-center py-5" data-aos="fade-up">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4" style="color: var(--primary-color);">想了解更多？</h2>
+                    <p class="lead mb-4">歡迎來到香醇咖啡館，親自體驗我們的服務與熱忱</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+
+                        <a href="menu.html" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-utensils me-2"></i>查看菜單
+                        </a>
+                        <a href="news.html" class="btn btn-outline-secondary btn-lg">
+                            <i class="fas fa-calendar me-2"></i>最新活動
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark-brown); color: white; padding: 3rem 0 1rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">香醇咖啡館</h5>
+                    <p>用心品味每一杯咖啡，感受生活的美好時光。</p>
+                    <div class="social-icons">
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-line"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">快速連結</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="menu.html" class="text-white text-decoration-none">菜單</a></li>
+                        <li class="mb-2"><a href="home.html#locations" class="text-white text-decoration-none">分店資訊</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">聯絡資訊</h5>
+                    <p><i class="fas fa-phone me-2"></i>(02) 2345-6789</p>
+                    <p><i class="fas fa-envelope me-2"></i>41241211@nfu.edu.tw</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>台北市信義區咖啡街123號</p>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center">
+                <p class="mb-0">&copy;2025 香醇咖啡館 · All Rights Reserved · Student ID: 41241211
+
+
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when stats section comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Social media hover effects
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#F4E4BC';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = 'white';
+            });
+        });
+
+        // Team member card interactions
+        document.querySelectorAll('.team-member').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Timeline item animations
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(139, 69, 19, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'var(--primary-color)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add parallax effect to hero banner
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero-banner');
+            const scrolled = window.pageYOffset;
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香醇咖啡館 - 分店資訊</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F4E4BC;
+            --dark-brown: #3E2723;
+            --light-cream: #FFF8DC;
+        }
+
+        * {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .navbar {
+            background: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .location-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+            background: var(--light-cream);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover .location-icon {
+            background: var(--secondary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .location-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .location-subtitle {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .location-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--light-cream);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .info-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+
+        .info-content h6 {
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .location-features {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--secondary-color);
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .feature-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover .location-image {
+            transform: scale(1.05);
+        }
+
+        .opening-hours {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--light-cream);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .hours-item:hover {
+            background: var(--accent-color);
+        }
+
+        .day {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .time {
+            color: var(--dark-brown);
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-brown));
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .quick-info {
+            background: var(--accent-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .quick-info h5 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .location-card {
+                padding: 1.5rem;
+            }
+
+            .location-info {
+                grid-template-columns: 1fr;
+            }
+
+            .location-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .location-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .announcement-banner {
+            background: linear-gradient(135deg, var(--secondary-color), #FF8C00);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <i class="fas fa-bullhorn me-2"></i>好消息！信義店現正試營運中，歡迎蒞臨體驗！
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="top: 40px;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="home.html">
+                <i class="fas fa-coffee me-2"></i>香醇咖啡館
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">菜單</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="locations.html">分店資訊</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">最新消息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html#gallery">相簿</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html#contact">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner" style="margin-top: 40px;">
+        <div class="container">
+            <h1 class="hero-title" data-aos="fade-up">分店資訊</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="200">尋找離您最近的香醇咖啡館</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Quick Info -->
+        <div class="quick-info" data-aos="fade-up">
+            <h5><i class="fas fa-info-circle me-2"></i>營業資訊</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-clock text-primary me-2"></i>
+                    <strong>營業時間：</strong>每日 07:00 - 22:00
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-phone text-primary me-2"></i>
+                    <strong>訂位專線：</strong>(02) 2345-6789
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-motorcycle text-primary me-2"></i>
+                    <strong>外送服務：</strong>透過foodpanda訂購
+                </div>
+            </div>
+        </div>
+
+        <!-- Store Locations -->
+        <h2 class="section-title" data-aos="fade-up">分店位置</h2>
+
+        <!-- Main Store - Xinyi -->
+        <div class="location-card" data-aos="fade-up">
+            <div class="location-header">
+                <div class="location-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div>
+                    <h3 class="location-title">信義總店</h3>
+                    <p class="location-subtitle">旗艦店 · 創始店 · 咖啡學院</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="信義總店" class="location-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="location-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt info-icon"></i>
+                            <div class="info-content">
+                                <h6>地址</h6>
+                                <p>台北市信義區咖啡街123號1-2樓</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone info-icon"></i>
+                            <div class="info-content">
+                                <h6>聯絡電話</h6>
+                                <p>(02) 2345-6789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-subway info-icon"></i>
+                            <div class="info-content">
+                                <h6>交通資訊</h6>
+                                <p>捷運市政府站2號出口步行3分鐘<br>多條公車路線直達</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fas fa-car info-icon"></i>
+                            <div class="info-content">
+                                <h6>停車資訊</h6>
+                                <p>店門口設有機車停車格<br>鄰近有多個付費停車場</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-features">
+                <h6 class="mb-3"><i class="fas fa-star me-2"></i>店內特色</h6>
+                <div class="feature-tags">
+                    <span class="feature-tag"><i class="fas fa-wifi me-1"></i>免費WiFi</span>
+                    <span class="feature-tag"><i class="fas fa-plug me-1"></i>插座充電</span>
+                    <span class="feature-tag"><i class="fas fa-book me-1"></i>閱讀區</span>
+                    <span class="feature-tag"><i class="fas fa-users me-1"></i>包場服務</span>
+                    <span class="feature-tag"><i class="fas fa-graduation-cap me-1"></i>咖啡課程</span>
+                    <span class="feature-tag"><i class="fas fa-wheelchair me-1"></i>無障礙</span>
+                    <span class="feature-tag"><i class="fas fa-baby me-1"></i>親子友善</span>
+                    <span class="feature-tag"><i class="fas fa-dog me-1"></i>寵物友善</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Store - Daan -->
+        <div class="location-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="location-header">
+                <div class="location-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div>
+                    <h3 class="location-title">大安文青店</h3>
+                    <p class="location-subtitle">文青風格 · 安靜氛圍 · 創作空間</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="大安文青店" class="location-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="location-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt info-icon"></i>
+                            <div class="info-content">
+                                <h6>地址</h6>
+                                <p>台北市大安區溫州街45號</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone info-icon"></i>
+                            <div class="info-content">
+                                <h6>聯絡電話</h6>
+                                <p>(02) 2363-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-subway info-icon"></i>
+                            <div class="info-content">
+                                <h6>交通資訊</h6>
+                                <p>捷運公館站1號出口步行5分鐘<br>鄰近台大校園</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fas fa-bicycle info-icon"></i>
+                            <div class="info-content">
+                                <h6>停車資訊</h6>
+                                <p>YouBike站點就在附近<br>巷內有機車停車格</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-features">
+                <h6 class="mb-3"><i class="fas fa-star me-2"></i>店內特色</h6>
+                <div class="feature-tags">
+                    <span class="feature-tag"><i class="fas fa-wifi me-1"></i>免費WiFi</span>
+                    <span class="feature-tag"><i class="fas fa-plug me-1"></i>插座充電</span>
+                    <span class="feature-tag"><i class="fas fa-volume-mute me-1"></i>安靜環境</span>
+                    <span class="feature-tag"><i class="fas fa-palette me-1"></i>藝術展覽</span>
+                    <span class="feature-tag"><i class="fas fa-book-open me-1"></i>圖書角落</span>
+                    <span class="feature-tag"><i class="fas fa-music me-1"></i>文青音樂</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Third Store - Songshan -->
+        <div class="location-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="location-header">
+                <div class="location-icon">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <div>
+                    <h3 class="location-title">松山機場店</h3>
+                    <p class="location-subtitle">24小時營業 · 旅客服務 · 外帶專門</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="松山機場店" class="location-image">
+                </div>
+                <div class="col-lg-6">
+                    <div class="location-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt info-icon"></i>
+                            <div class="info-content">
+                                <h6>地址</h6>
+                                <p>台北市松山區敦化北路340-9號<br>松山機場航廈內1樓</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-phone info-icon"></i>
+                            <div class="info-content">
+                                <h6>聯絡電話</h6>
+                                <p>(02) 2545-1234</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-clock info-icon"></i>
+                            <div class="info-content">
+                                <h6>營業時間</h6>
+                                <p>24小時營業<br>全年無休</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fas fa-subway info-icon"></i>
+                            <div class="info-content">
+                                <h6>交通資訊</h6>
+                                <p>捷運松山機場站直達<br>機場巴士、計程車便利</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-features">
+                <h6 class="mb-3"><i class="fas fa-star me-2"></i>店內特色</h6>
+                <div class="feature-tags">
+                    <span class="feature-tag"><i class="fas fa-clock me-1"></i>24小時</span>
+                    <span class="feature-tag"><i class="fas fa-luggage-cart me-1"></i>行李友善</span>
+                    <span class="feature-tag"><i class="fas fa-language me-1"></i>多語服務</span>
+                    <span class="feature-tag"><i class="fas fa-shopping-bag me-1"></i>外帶專門</span>
+                    <span class="feature-tag"><i class="fas fa-credit-card me-1"></i>多元支付</span>
+                    <span class="feature-tag"><i class="fas fa-gift me-1"></i>伴手禮</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coming Soon Store -->
+        <div class="location-card" data-aos="fade-up" data-aos-delay="300" style="opacity: 0.8; border: 2px dashed var(--secondary-color);">
+            <div class="location-header">
+                <div class="location-icon" style="background: #f8f9fa; color: #6c757d;">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div>
+                    <h3 class="location-title" style="color: #6c757d;">西門町店</h3>
+                    <p class="location-subtitle" style="color: #6c757d;">籌備中 · 預計2025年3月開幕</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div style="height: 200px; background: #f8f9fa; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+                        <div class="text-center">
+                            <i class="fas fa-hammer" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>裝潢施工中</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="location-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt info-icon"></i>
+                            <div class="info-content">
+                                <h6>預定地址</h6>
+                                <p>台北市萬華區西寧南路8號</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-calendar info-icon"></i>
+                            <div class="info-content">
+                                <h6>預計開幕</h6>
+                                <p>2025年3月</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-subway info-icon"></i>
+                            <div class="info-content">
+                                <h6>交通資訊</h6>
+                                <p>捷運西門站6號出口<br>步行2分鐘</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fas fa-star info-icon"></i>
+                            <div class="info-content">
+                                <h6>店面特色</h6>
+                                <p>青春活力風格<br>夜貓族友善營業時間</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-features">
+                <h6 class="mb-3"><i class="fas fa-star me-2"></i>預計特色</h6>
+                <div class="feature-tags">
+                    <span class="feature-tag" style="background: #f8f9fa; color: #6c757d;"><i class="fas fa-music me-1"></i>現場音樂</span>
+                    <span class="feature-tag" style="background: #f8f9fa; color: #6c757d;"><i class="fas fa-gamepad me-1"></i>遊戲區</span>
+                    <span class="feature-tag" style="background: #f8f9fa; color: #6c757d;"><i class="fas fa-moon me-1"></i>深夜營業</span>
+                    <span class="feature-tag" style="background: #f8f9fa; color: #6c757d;"><i class="fas fa-users me-1"></i>年輕族群</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operating Hours -->
+        <div class="opening-hours" data-aos="fade-up">
+            <h2 class="section-title">營業時間</h2>
+            <div class="hours-grid">
+                <div class="hours-item">
+                    <span class="day">信義總店</span>
+                    <span class="time">07:00 - 22:00</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">大安文青店</span>
+                    <span class="time">08:00 - 21:00</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">松山機場店</span>
+                    <span class="time">24小時營業</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">週一至週五</span>
+                    <span class="time">早鳥優惠 07:00-09:00</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">週末假日</span>
+                    <span class="time">延長營業至23:00</span>
+                </div>
+                <div class="hours-item">
+                    <span class="day">國定假日</span>
+                    <span class="time">正常營業</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section" data-aos="fade-up">
+            <div class="container">
+                <h2 class="text-center mb-4" style="color: white;">聯絡各分店</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <h5>信義總店</h5>
+                        <p>(02) 2345-6789</p>
+                        <small>接受電話預約</small>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <h5>大安文青店</h5>
+                        <p>(02) 2363-7890</p>
+                        <small>安靜環境，適合工作</small>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <h5>松山機場店</h5>
+                        <p>(02) 2545-1234</p>
+                        <small>24小時服務</small>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <h5>客服信箱</h5>
+                        <p>info@aromacoffee.com.tw</p>
+                        <small>線上諮詢服務</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div class="map-container" data-aos="fade-up">
+            <h2 class="section-title">地圖導航</h2>
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 mb-2 map-btn active" data-store="xinyi">
+                        <i class="fas fa-map-marker-alt me-2"></i>信義總店
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 mb-2 map-btn" data-store="daan">
+                        <i class="fas fa-map-marker-alt me-2"></i>大安文青店
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-outline-primary w-100 mb-2 map-btn" data-store="songshan">
+                        <i class="fas fa-map-marker-alt me-2"></i>松山機場店
+                    </button>
+                </div>
+            </div>
+            
+            <div class="map-placeholder" id="mapContainer">
+                <div class="text-center">
+                    <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h5>Google Maps 地圖載入中...</h5>
+                    <p>點擊上方按鈕切換不同分店位置</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">信義總店：台北市信義區咖啡街123號</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <div class="text-center p-3" style="background: var(--light-cream); border-radius: 10px;">
+                        <i class="fas fa-directions text-primary mb-2" style="font-size: 1.5rem;"></i>
+                        <h6>導航服務</h6>
+                        <p class="small mb-0">Google Maps / Apple Maps</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3" style="background: var(--light-cream); border-radius: 10px;">
+                        <i class="fas fa-parking text-primary mb-2" style="font-size: 1.5rem;"></i>
+                        <h6>停車資訊</h6>
+                        <p class="small mb-0">機車格 / 付費停車場</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3" style="background: var(--light-cream); border-radius: 10px;">
+                        <i class="fas fa-bus text-primary mb-2" style="font-size: 1.5rem;"></i>
+                        <h6>大眾運輸</h6>
+                        <p class="small mb-0">捷運 / 公車 / YouBike</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); height: 100%;">
+                    <h4 class="mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-concierge-bell me-2"></i>特殊服務
+                    </h4>
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center p-2" style="background: var(--light-cream); border-radius: 8px;">
+                                <i class="fas fa-birthday-cake text-primary me-2"></i>
+                                <small>生日派對包場</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center p-2" style="background: var(--light-cream); border-radius: 8px;">
+                                <i class="fas fa-briefcase text-primary me-2"></i>
+                                <small>商務會議室</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center p-2" style="background: var(--light-cream); border-radius: 8px;">
+                                <i class="fas fa-graduation-cap text-primary me-2"></i>
+                                <small>咖啡教學課程</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="d-flex align-items-center p-2" style="background: var(--light-cream); border-radius: 8px;">
+                                <i class="fas fa-camera text-primary me-2"></i>
+                                <small>網美拍照場地</small>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="small text-muted mt-3">需提前預約，詳情請洽各分店</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <div style="background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); height: 100%;">
+                    <h4 class="mb-4" style="color: var(--primary-color);">
+                        <i class="fas fa-truck me-2"></i>外送資訊
+                    </h4>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span><i class="fab fa-uber me-2"></i>Uber Eats</span>
+                            <span class="badge bg-success">可用</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span><i class="fas fa-paw me-2"></i>foodpanda</span>
+                            <span class="badge bg-success">可用</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span><i class="fas fa-motorcycle me-2"></i>自家外送</span>
+                            <span class="badge bg-warning">限區域</span>
+                        </div>
+                    </div>
+                    <div class="p-3" style="background: var(--light-cream); border-radius: 10px;">
+                        <h6 class="mb-2">外送優惠</h6>
+                        <ul class="small mb-0">
+                            <li>滿$200免外送費</li>
+                            <li>會員額外9折優惠</li>
+                            <li>首次訂購送小餅乾</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div style="background: white; border-radius: 15px; padding: 2rem; margin: 3rem 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" data-aos="fade-up">
+            <h4 class="mb-4 text-center" style="color: var(--primary-color);">
+                <i class="fas fa-question-circle me-2"></i>常見問題
+            </h4>
+            <div class="accordion" id="locationFAQ">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                            <i class="fas fa-calendar-check me-2"></i>可以預約座位嗎？
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#locationFAQ">
+                        <div class="accordion-body">
+                            可以的！信義總店和大安文青店都接受電話預約。建議提前一天預約以確保有位子。松山機場店因空間限制，恕不接受預約。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                            <i class="fas fa-paw me-2"></i>可以帶寵物嗎？
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#locationFAQ">
+                        <div class="accordion-body">
+                            信義總店設有寵物友善區域，歡迎攜帶寵物入內。大安文青店和松山機場店因空間考量，目前不開放寵物入內。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                            <i class="fas fa-credit-card me-2"></i>接受哪些付款方式？
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#locationFAQ">
+                        <div class="accordion-body">
+                            我們接受現金、各大信用卡、Apple Pay、Google Pay、Line Pay、街口支付等多種付款方式。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="faq4">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                            <i class="fas fa-wifi me-2"></i>WiFi密碼是什麼？
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#locationFAQ">
+                        <div class="accordion-body">
+                            WiFi名稱：AromaCoffee_Free<br>
+                            密碼：coffee2024<br>
+                            所有分店統一使用此組WiFi資訊。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--dark-brown); color: white; padding: 3rem 0 1rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">香醇咖啡館</h5>
+                    <p>用心品味每一杯咖啡，感受生活的美好時光。</p>
+                    <div class="social-icons">
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-line"></i></a>
+                        <a href="#" style="color: white; font-size: 1.5rem; margin: 0 0.5rem; transition: color 0.3s ease;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">分店快速連結</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="tel:0223456789" class="text-white text-decoration-none"><i class="fas fa-phone me-2"></i>信義總店：(02) 2345-6789</a></li>
+                        <li class="mb-2"><a href="tel:0223637890" class="text-white text-decoration-none"><i class="fas fa-phone me-2"></i>大安文青店：(02) 2363-7890</a></li>
+                        <li class="mb-2"><a href="tel:0225451234" class="text-white text-decoration-none"><i class="fas fa-phone me-2"></i>松山機場店：(02) 2545-1234</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">快速導航</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="menu.html" class="text-white text-decoration-none">線上菜單</a></li>
+                        <li class="mb-2"><a href="About.html" class="text-white text-decoration-none">關於我們</a></li>
+                        <li class="mb-2"><a href="news.html" class="text-white text-decoration-none">最新消息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center">
+                <p class="mb-0">&copy;2025 香醇咖啡館 · All Rights Reserved · Student ID: 41241211
+
+                
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Map buttons functionality
+        const mapButtons = document.querySelectorAll('.map-btn');
+        const mapContainer = document.getElementById('mapContainer');
+        
+        const storeInfo = {
+            xinyi: {
+                name: '信義總店',
+                address: '台北市信義區咖啡街123號',
+                description: '旗艦店 · 創始店 · 咖啡學院'
+            },
+            daan: {
+                name: '大安文青店',
+                address: '台北市大安區溫州街45號',
+                description: '文青風格 · 安靜氛圍 · 創作空間'
+            },
+            songshan: {
+                name: '松山機場店',
+                address: '台北市松山區敦化北路340-9號 松山機場航廈內1樓',
+                description: '24小時營業 · 旅客服務 · 外帶專門'
+            }
+        };
+
+        mapButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                mapButtons.forEach(btn => btn.classList.remove('active', 'btn-primary'));
+                mapButtons.forEach(btn => btn.classList.add('btn-outline-primary'));
+                
+                // Add active class to clicked button
+                this.classList.remove('btn-outline-primary');
+                this.classList.add('btn-primary', 'active');
+                
+                // Update map content
+                const store = this.getAttribute('data-store');
+                const info = storeInfo[store];
+                
+                mapContainer.innerHTML = `
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);"></i>
+                        <h5>${info.name}</h5>
+                        <p class="text-muted">${info.description}</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">${info.address}</span>
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-outline-primary me-2">
+                                <i class="fas fa-directions me-1"></i>Google Maps
+                            </button>
+                            <button class="btn btn-outline-secondary">
+                                <i class="fas fa-phone me-1"></i>撥打電話
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Social media hover effects
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#F4E4BC';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = 'white';
+            });
+        });
+
+        // Location card hover effects
+        document.querySelectorAll('.location-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.style.opacity || this.style.opacity === '1') {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                }
+            });
+            card.addEventListener('mouseleave', function() {
+                if (!this.style.opacity || this.style.opacity === '1') {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        // Feature tags hover effects
+        document.querySelectorAll('.feature-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                if (!this.style.background || !this.style.background.includes('#f8f9fa')) {
+                    this.style.transform = 'scale(1.1)';
+                }
+            });
+            tag.addEventListener('mouseleave', function() {
+                if (!this.style.background || !this.style.background.includes('#f8f9fa')) {
+                    this.style.transform = 'scale(1)';
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Adjust navbar for announcement banner
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const banner = document.querySelector('.announcement-banner');
+            
+            if (window.scrollY > banner.offsetHeight) {
+                navbar.style.top = '0';
+            } else {
+                navbar.style.top = '40px';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

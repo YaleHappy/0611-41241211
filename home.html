@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香醇咖啡館 - 職人手沖 在地小店</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F4E4BC;
+            --dark-brown: #3E2723;
+            --light-cream: #FFF8DC;
+        }
+
+        * {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .navbar {
+            transition: all 0.3s ease;
+            background: rgba(139, 69, 19, 0.95) !important;
+        }
+
+        .navbar.scrolled {
+            background: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            border: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--light-cream);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .menu-category {
+            background: var(--accent-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item img {
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 1rem;
+        }
+
+        .testimonial-rating {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--dark-brown);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-coffee me-2"></i>香醇咖啡館
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">菜單</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html">關於我們</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="locations.html">分店資訊</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">最新消息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">相簿</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title" data-aos="fade-up">香醇咖啡館</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">職人手沖 · 在地小店 · 品味生活</p>
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="300">
+                            <div class="feature-item">
+                                <i class="fas fa-coffee feature-icon"></i>
+                                <h5>精品咖啡</h5>
+                                <p>嚴選世界各地優質咖啡豆</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="400">
+                            <div class="feature-item">
+                                <i class="fas fa-cookie-bite feature-icon"></i>
+                                <h5>手作甜點</h5>
+                                <p>每日新鮮製作美味糕點</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3" data-aos="fade-up" data-aos-delay="500">
+                            <div class="feature-item">
+                                <i class="fas fa-heart feature-icon"></i>
+                                <h5>溫馨空間</h5>
+                                <p>舒適環境享受悠閒時光</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="menu.html" class="btn btn-primary btn-lg mt-4" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-utensils me-2"></i>查看菜單
+            </a>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">最新消息</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4" data-aos="fade-right">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="聖誕活動">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge bg-primary mb-2">最新活動</span>
+                                    <h5 class="card-title">聖誕限定飲品上市！</h5>
+                                    <p class="card-text">溫暖的聖誕節即將到來，我們推出了三款限定飲品：聖誕香料拿鐵、薑餅摩卡、以及熱紅酒。每一杯都充滿節慶的溫暖氣息。</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1"></i>2024年12月1日 - 12月31日
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4" data-aos="fade-right" data-aos-delay="100">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="咖啡課程">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge bg-success mb-2">課程資訊</span>
+                                    <h5 class="card-title">手沖咖啡體驗課程</h5>
+                                    <p class="card-text">想學習專業的手沖技巧嗎？我們的咖啡師將親自教授，從咖啡豆的挑選到沖煮技巧，讓您在家也能享受專業級咖啡。</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <i class="fas fa-users me-1"></i>每班限制8人 | 
+                                            <i class="fas fa-dollar-sign me-1"></i>費用：$800/人
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4" data-aos="fade-right" data-aos-delay="200">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                     class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="會員優惠">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge bg-warning mb-2">會員優惠</span>
+                                    <h5 class="card-title">會員點數雙倍送</h5>
+                                    <p class="card-text">即日起至月底，所有會員消費都可獲得雙倍點數！累積點數可兌換免費飲品和甜點，趕快把握機會。</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <i class="fas fa-star me-1"></i>消費滿$100即可獲得2點
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-bullhorn me-2"></i>快速公告</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <h6>營業時間調整</h6>
+                                <p class="small text-muted">12/24 平安夜提早至20:00結束營業</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <h6>新品上架</h6>
+                                <p class="small text-muted">手工餅乾禮盒現正販售中</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <h6>包場服務</h6>
+                                <p class="small text-muted">提供生日派對、商務聚會包場服務</p>
+                            </div>
+                            <hr>
+                            <div>
+                                <h6>外送服務</h6>
+                                <p class="small text-muted">現在可透過foodpanda訂購外送</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mt-4" data-aos="fade-left" data-aos-delay="100">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>本月活動</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>咖啡杯測體驗</span>
+                                <small class="text-muted">12/15</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>拉花藝術工作坊</span>
+                                <small class="text-muted">12/22</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span>聖誕特別活動</span>
+                                <small class="text-muted">12/25</small>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>跨年倒數活動</span>
+                                <small class="text-muted">12/31</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">店內相簿</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="店內環境" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="咖啡製作" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="精美擺設" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="手沖咖啡" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="甜點展示" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="舒適座位" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials Section - 置中顯示 -->
+    <section class="testimonials-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">顧客好評</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"手作甜點非常美味，尤其是提拉米蘇！咖啡師也很親切，每次都會推薦不同的豆子讓我嘗試。"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="顧客" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div class="testimonial-author-info">
+                                <h6>李志豪</h6>
+                                <small>科技業工程師</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"這裡是我的秘密基地！安靜舒適的環境，很適合閱讀和寫作。WiFi也很穩定，讚！"</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="顧客" class="rounded-circle" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div class="testimonial-author-info">
+                                <h6>陳雅婷</h6>
+                                <small>作家</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+<div class="container">
+<h2 class="section-title text-center" data-aos="fade-up">聯絡我們</h2>
+<div class="row">
+<div class="col-lg-6 mb-4" data-aos="fade-right">
+    <h4 class="mb-4">留言給我們</h4>
+    <form>
+        <div class="mb-3">
+            <label for="name" class="form-label">姓名</label>
+            <input type="text" class="form-control" id="name" placeholder="請輸入您的姓名">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">電子郵件</label>
+            <input type="email" class="form-control" id="email" placeholder="請輸入您的電子郵件">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">聯絡電話</label>
+            <input type="tel" class="form-control" id="phone" placeholder="請輸入您的聯絡電話">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">留言內容</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="請輸入您的留言..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane me-2"></i>送出留言
+        </button>
+    </form>
+</div>
+
+<div class="col-lg-6" data-aos="fade-left">
+    <h4 class="mb-4">聯絡方式</h4>
+    <div class="mb-4">
+        <div class="d-flex align-items-start mb-3">
+            <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+            <div>
+                <h6 class="mb-1">電子郵件</h6>
+                <p class="mb-0">41241211@nfu.edu.tw</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+            <i class="fas fa-phone text-primary me-3 mt-1"></i>
+            <div>
+                <h6 class="mb-1">聯絡電話</h6>
+                <p class="mb-0">(02) 2345-6789</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+            <i class="fas fa-clock text-primary me-3 mt-1"></i>
+            <div>
+                <h6 class="mb-1">營業時間</h6>
+                <p class="mb-0">週一至週五：07:00 - 22:00<br>
+                週六、週日：08:00 - 23:00</p>
+            </div>
+        </div>
+    </div>
+    
+    <h4 class="mb-3">常見問題</h4>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    提供WiFi和插座嗎？
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    是的，我們提供免費高速WiFi，每個座位區都有插座可供使用。
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    可以預約座位嗎？
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    可以的！我們接受電話預約，建議提前一天預約以確保座位。
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    有提供包場服務嗎？
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    有的，我們提供包場服務，適合舉辦生日派對、商務聚會等活動。詳情請來電洽詢。
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-lg-4 mb-4">
+    <h5 class="mb-3">香醇咖啡館</h5>
+    <p>用心品味每一杯咖啡，感受生活的美好時光。</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-line"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+<div class="col-lg-4 mb-4">
+    <h5 class="mb-3">快速連結</h5>
+    <ul class="list-unstyled">
+        <li class="mb-2"><a href="menu.html" class="text-white text-decoration-none">菜單</a></li>
+        <li class="mb-2"><a href="About.html" class="text-white text-decoration-none">關於我們</a></li>
+        <li class="mb-2"><a href="locations.html" class="text-white text-decoration-none">分店資訊</a></li>
+    </ul>
+</div>
+<div class="col-lg-4 mb-4">
+    <h5 class="mb-3">訂閱電子報</h5>
+    <p>訂閱我們的電子報，獲取最新優惠資訊！</p>
+    <form class="d-flex">
+        <input type="email" class="form-control me-2" placeholder="輸入您的電子郵件">
+        <button class="btn btn-primary" type="submit">訂閱</button>
+    </form>
+</div>
+</div>
+<hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+<div class="text-center">
+<p class="mb-0">&copy;2025 香醇咖啡館 · All Rights Reserved · Student ID: 41241211
+
+</p>
+</div>
+</div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+<i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+// Initialize AOS
+AOS.init({
+duration: 1000,
+once: true,
+offset: 100
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+const navbar = document.querySelector('.navbar');
+if (window.scrollY > 50) {
+navbar.classList.add('scrolled');
+} else {
+navbar.classList.remove('scrolled');
+}
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+    target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+});
+});
+
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+if (window.scrollY > 300) {
+backToTopButton.classList.add('show');
+} else {
+backToTopButton.classList.remove('show');
+}
+});
+
+backToTopButton.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+
+// Form submission
+document.querySelector('form').addEventListener('submit', function(e) {
+e.preventDefault();
+alert('感謝您的留言！我們會盡快回覆您。');
+this.reset();
+});
+
+// Newsletter subscription
+document.querySelectorAll('form')[1].addEventListener('submit', function(e) {
+e.preventDefault();
+alert('感謝您的訂閱！您將收到我們的最新資訊。');
+this.reset();
+});
+</script>
+</body>
+</html>
